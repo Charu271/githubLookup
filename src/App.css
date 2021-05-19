@@ -1,0 +1,11 @@
+.canvasjs-chart-container {
+  position: static !important;
+  scrollbar-width: 0px;
+}
+.canvasjs-chart-toolbar {
+  left: 0;
+  width: 120px;
+  height: 200px;
+}
+.canvasjs-chart-canvas {
+}

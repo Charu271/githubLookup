@@ -1,0 +1,45 @@
+@import "../../Assets/constants.scss";
+.outer-container {
+  width: 100%;
+  height: 100%;
+}
+.userProfile {
+  overflow-x: hidden;
+  padding: 5px;
+  position: absolute;
+}
+.wrapper {
+  padding: 1%;
+}
+#canvasjs-react-chart-container-1621268791603,
+#canvasjs-react-chart-container-1621268801604,
+#canvasjs-react-chart-container-1621269701005 {
+  overflow-y: hidden !important;
+  // scrollbar-width: 0px;
+}
+.canvas-js-toolbar {
+  right: 20px;
+}
+.h {
+  color: $header-card;
+  margin-top: 35px;
+  font-size: 2.5rem;
+}
+.form-select {
+  width: 20%;
+}
+.area,
+.twoCharts {
+  margin-top: 50px;
+}
+.particles1 {
+  position: fixed;
+  height: 100%;
+  background-attachment: fixed;
+  background-color: $main-color;
+  height: 100vh;
+  width: 100vw;
+}
+.parent > div {
+  overflow-y: hidden;
+}

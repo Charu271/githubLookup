@@ -1,0 +1,54 @@
+@import "../../../Assets/constants.scss";
+
+.avatar {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin: auto;
+}
+.name,
+.login,
+.repos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.name {
+  color: $header-card;
+}
+.login a {
+  color: $link-color;
+}
+.profile {
+  margin: 2%;
+}
+.smCard {
+  margin: 5px;
+  height: 100px;
+  width: 150px;
+  padding: 10px 20px;
+  background: linear-gradient(
+    to top right,
+    #25bfb6,
+    #53cec6,
+    #74ded7,
+    #91ede7,
+    #adfdf8
+  );
+  color: black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.name {
+  margin: 2%;
+  margin-bottom: 1%;
+}
+.login {
+  margin-bottom: 1%;
+  font-size: 1.25rem;
+}

@@ -1,0 +1,39 @@
+.card {
+  background-color: #25293f;
+  color: #25bfb6;
+  border-radius: 10px;
+  padding: 2%;
+  margin-top: 8px;
+}
+
+.language {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content {
+  margin-top: 50px;
+}
+
+.repoName {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.forks,
+.stars,
+.size {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+.internal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=Repo.css.map */

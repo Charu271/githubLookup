@@ -1,0 +1,55 @@
+.octocat {
+  height: 200px;
+  width: 200px;
+  display: block;
+  margin: auto;
+}
+.particles {
+  position: absolute;
+  background-color: #141518;
+  height: 100vh;
+  width: 100vw;
+}
+.heroSection {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+}
+
+.textfield {
+  background-color: #21253d;
+  border: 2px solid #4e5369;
+  border-radius: 15px;
+  padding: 10px 20px;
+  outline: none;
+  width: 70%;
+  margin: 2%;
+  caret-color: #4e5369;
+  display: block;
+  margin: auto;
+  color: #9497a3;
+  &::placeholder {
+    color: #4e5369;
+  }
+}
+.heading {
+  position: absolute;
+  color: #9497a3;
+  left: 35%;
+  top: 7%;
+  letter-spacing: 0.45rem;
+  font-size: 3rem;
+  font-weight: bolder;
+  @media (max-width: 700px) {
+    left: 30%;
+  }
+  @media (max-width: 568px) {
+    left: 25%;
+  }
+  @media (max-width: 477px) {
+    left: 15%;
+  }
+  @media (max-width: 300px) {
+    left: 10%;
+  }
+}

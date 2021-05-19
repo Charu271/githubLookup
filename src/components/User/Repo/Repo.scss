@@ -1,0 +1,31 @@
+@import "../../../Assets/constants.scss";
+.card {
+  background-color: #1e2742;
+  color: $header-card;
+  border-radius: 10px;
+  padding: 2%;
+  margin-top: 8px;
+}
+.content {
+  color: #a2a2a3;
+}
+.language {
+  display: flex;
+}
+.content {
+  margin-top: 50px;
+}
+.repoName {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.forks,
+.stars,
+.size {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+.internal {
+  display: flex;
+  align-items: center;
+}
