@@ -1,15 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Repo.scss";
 import fork from "../../../Assets/fork.svg";
 import StarIcon from "@material-ui/icons/Star";
 import { colors } from "../../../Assets/colors";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import { useSpring, animated, config } from 'react-spring';
 
-export default class Repo extends Component {
-  render() {
-    const repo = this.props.repo;
+
+   
+
+    const calc = (x, y) => [-(y - window.innerHeight / 2) / 40, (x - window.innerWidth / 2) / 40, 1]
+    const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
+    const Repo = (props) => {
+
+      const [p, set] = useSpring(() => ({ xys: [0, 0, 1] , config: config.default}))
+    const repo = props.repo;
+    
     return (
-      <div className="card">
+      <animated.div className="card" 
+        onMouseMove={({clientX: x, clientY: y}) => (set({xys: calc(x, y)}))}
+            onMouseLeave={() => set({xys:[0,0,1]})}
+            style={{
+                transform: p.xys.interpolate(trans)
+            }}
+      >
         <div className="repoName">{repo.name}</div>
         {/* <div className="description">{repo.description}</div> */}
         <div className="content row ">
@@ -44,7 +58,9 @@ export default class Repo extends Component {
               : `${repo.size} B`}
           </div>
         </div>
-      </div>
+      </animated.div>
     );
-  }
 }
+  
+
+export default Repo;
