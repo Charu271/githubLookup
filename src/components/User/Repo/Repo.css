@@ -4,6 +4,7 @@
   border-radius: 10px;
   padding: 2%;
   margin-top: 8px;
+  overflow-y: hidden;
 }
 
 .language {

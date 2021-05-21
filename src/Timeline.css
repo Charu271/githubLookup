@@ -1,0 +1,88 @@
+body {
+  background-color: #21253d;
+  
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+   
+    
+  }
+  
+  .title {
+    font-size: 6em;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(33, 150, 243) ;
+  }
+
+  .second-heading{
+      color: white;
+      text-align: center;
+  }
+  
+  h3 {
+    padding-top: 0.25em;
+    
+  }
+  .vertical-timeline-element-title{
+    font-family: 'Bebas Neue', cursive;
+    color: black;
+    font-size: xx-large;
+
+  }
+  .vertical-timeline-element-content {
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25),
+      0 0.4em 1.25em 0 rgba(0, 0, 0, 0.15) !important;
+    padding: 2em 3em !important;
+  }
+  .vertical-timeline-element-subtitle{
+    color: black;
+  }
+  
+  
+  .date {
+    color: white;
+  }
+  #description {
+    margin: 1.5em 0 2em 0;
+    color: black;
+
+
+  }
+  
+  .button {
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .workButton {
+    background-color:rgb(39, 34, 34);
+  }
+  
+  .workButton:hover {
+    background-color: rgb(139, 136, 136);
+    color:white;
+  }
+  
+  .schoolButton {
+    background-color:  rgb(39, 34, 34);
+    
+  }
+  
+  .schoolButton:hover {
+    background-color: rgb(139, 136, 136);
+    color:white;
+  }
+  
+  @media only screen and (max-width: 1169px) {
+    .vertical-timeline-element-date {
+      display: block !important;
+      float: none !important;
+      color: black;
+      margin-top: 1.5em;
+    }
+  }
+
+ 
+  
