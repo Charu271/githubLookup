@@ -3,10 +3,6 @@
 import React, { Component } from "react";
 import Profile from "./Profile/Profile";
 import axios from "axios";
-import Sidebar from "../Sidebar/Sidebar";
-import { CanvasJSChart } from "canvasjs-react-charts";
-import { Autocomplete } from "@material-ui/lab";
-import TextField from "@material-ui/core/TextField";
 import Particles from "react-particles-js";
 import "./User.scss";
 import Pie from "./Charts/Pie";
@@ -26,35 +22,14 @@ class User extends Component {
       pieData: [],
       starData: [],
       topRepos: [],
-      topUsers: [],
+
       pieColor: [],
-      languages: ["C", "Java", "Javascript"],
-      language: "javascript",
-      starredRepos: [],
+
       user: JSON.parse(localStorage.getItem("user")),
       loader: true,
     };
   }
-  getTopRepositories = async () => {
-    try {
-      const res = await axios.get(
-        `https://api.github.com/search/repositories?q=language:${this.state.language}&sort=stars&order=desc`,
-        {
-          headers: {
-            Authorization: "Token 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",
-          },
-        }
-      );
-      this.setState({ starredRepos: res.data.items });
-      console.log(res.data);
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
-  setLanguauge = (e, value) => {
-    console.log(value);
-    this.setState({ language: value });
-  };
+
   fetchTopRepos = (e) => {
     //console.log(this.state.repos);
     var result = [...this.state.repos];
@@ -92,7 +67,7 @@ class User extends Component {
           if (result.length > 10) result.length = 10;
           this.setState({ topRepos: result });
         });
-        this.getTopUsers();
+        //this.getTopUsers();
         this.getWeeklyContributions();
         this.getTopLanguages();
         this.getStarred();
@@ -101,22 +76,7 @@ class User extends Component {
         console.log(err.message);
       });
   }
-  getTopUsers = async () => {
-    try {
-      const res = await axios.get(
-        "https://api.github.com/search/users?q=followers%3A%3E%3D1000&ref=searchresults&s=followers&type=Users",
-        {
-          headers: {
-            Authorization: "Token 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",
-          },
-        }
-      );
-      this.setState({ topUsers: res.data.items });
-      //console.log(res.data.items);
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
+
   getStarred = () => {
     const color = ["#bb86fc", "#ee7a8b", "#f9c270", "#64cce8"];
     const result = this.state.repos.map((repo, i) => {
@@ -242,25 +202,28 @@ class User extends Component {
                   <Area data={this.state.data} className="area" />
                 ) : null}
               </div>
-              <div className="row twoCharts justify-content-center align-items-center">
-                <div class="col-12 col-md-6 parent">
-                  {this.state.pieData.length > 0 ? (
-                    <Pie
-                      pieData={this.state.pieData}
-                      pieColor={this.state.pieColor}
-                    />
-                  ) : null}
-                </div>
-                <div class="col-12 col-md-6 parent">
-                  {this.state.starData.length > 0 ? (
-                    <Column starData={this.state.starData} />
-                  ) : null}
-                </div>
+              {/* <div className="row twoCharts justify-content-center align-items-center"> */}
+              <div class="col-12 parent">
+                {this.state.pieData.length > 0 ? (
+                  <Pie
+                    pieData={this.state.pieData}
+                    pieColor={this.state.pieColor}
+                  />
+                ) : null}
               </div>
+              <div class="col-12  parent">
+                {this.state.starData.length > 0 ? (
+                  <Column starData={this.state.starData} />
+                ) : null}
+              </div>
+              {/* </div> */}
               <div className="topRepositories">
                 <div className="select row">
-                  <div className="h ">
-                    Top repositories
+                  <div className="header">
+                    <div>
+                      Top repositories{" "}
+                      <span className="by">by&nbsp;&nbsp;&nbsp;</span>
+                    </div>
                     <select
                       onChange={this.fetchTopRepos}
                       className="form-select"
@@ -281,9 +244,6 @@ class User extends Component {
                 <br />
                 <br />
 
-                {/* {this.state.topUsers.map((user) => (
-          <p>{user.login}</p>
-        ))} */}
                 {/* <select>
           <option value="javascript">Javascript</option>
           <option value="java">Java</option>
@@ -303,25 +263,6 @@ class User extends Component {
           <option value="kotlin">Kotlin</option>
           <option value="go">Go</option>
         </select>*/}
-                {/* <button onClick={this.getTopRepositories}>Get Top Repositories</button>
-        <Autocomplete
-          freeSolo
-          id="free-solo-2-demo"
-          options={this.state.languages}
-          onChange={this.setLanguauge}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Search input"
-              margin="normal"
-              variant="outlined"
-              InputProps={{ ...params.InputProps, type: "search" }}
-            />
-          )}
-        />
-        {this.state.starredRepos.length > 0
-          ? this.state.starredRepos.map((repo) => <p>{repo.name}</p>)
-          : null} */}
               </div>
               //{" "}
               {/* <div className="col-4 col-sm-3 col-md-2">

@@ -25,7 +25,7 @@ export default class Repo extends Component {
           <div className="forks col-4">
             <div className="internal">
               <div>
-                <img src={fork} />
+                <img src={fork} style={{ fill: "black" }} />
               </div>
               <div>&nbsp;&nbsp;{repo.forks}</div>
             </div>

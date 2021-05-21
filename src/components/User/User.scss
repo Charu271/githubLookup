@@ -1,4 +1,5 @@
 @import "../../Assets/constants.scss";
+
 .outer-container {
   width: 100%;
   height: 100%;
@@ -7,9 +8,10 @@
   overflow-x: hidden;
   padding: 5px;
   position: absolute;
+  top: 10%;
 }
 .wrapper {
-  padding: 1%;
+  padding: 3%;
 }
 #canvasjs-react-chart-container-1621268791603,
 #canvasjs-react-chart-container-1621268801604,
@@ -19,11 +21,6 @@
 }
 .canvas-js-toolbar {
   right: 20px;
-}
-.h {
-  color: $header-card;
-  margin-top: 35px;
-  font-size: 2.5rem;
 }
 .form-select {
   width: 20%;
@@ -42,4 +39,28 @@
 }
 .parent > div {
   overflow-y: hidden;
+}
+.parent {
+  margin-top: 30px;
+  padding: 3%;
+  border-radius: 5px;
+}
+.header {
+  color: $header-card;
+  margin-top: 35px;
+  font-size: 2.5rem;
+  display: flex;
+  padding: 3%;
+}
+.by {
+  font-size: 1.2rem;
+}
+select {
+  height: 40px;
+  margin-top: 12px;
+}
+.form-select {
+  background-color: #e2fffc;
+  border: none;
+  outline: none;
 }

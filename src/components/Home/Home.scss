@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Goblin+One&family=Oswald&display=swap");
+
 .octocat {
-  height: 200px;
-  width: 200px;
+  height: 220px;
+  width: 220px;
   display: block;
   margin: auto;
 }
@@ -13,7 +15,7 @@
 .heroSection {
   position: absolute;
   width: 100%;
-  top: 30%;
+  top: 35%;
 }
 
 .textfield {
@@ -36,10 +38,11 @@
   position: absolute;
   color: #9497a3;
   left: 35%;
-  top: 7%;
+  top: 19%;
   letter-spacing: 0.45rem;
   font-size: 3rem;
   font-weight: bolder;
+  font-family: "Oswald", sans-serif;
   @media (max-width: 700px) {
     left: 30%;
   }

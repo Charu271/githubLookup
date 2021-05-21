@@ -1,11 +1,32 @@
 .canvasjs-chart-container {
   position: static !important;
-  scrollbar-width: 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+.canvasjs-chart-canvas {
+  border-radius: 5px;
 }
 .canvasjs-chart-toolbar {
   left: 0;
   width: 120px;
   height: 200px;
+}
+.canvasjs-chart-toolbar button {
+  left: 10px;
+  border-radius: 2px;
+  margin-left: 5px;
+  margin-top: 5px;
+  background-color: #e2fffc !important;
+}
+.canvasjs-chart-toolbar > button > img {
+  filter: invert(0%) !important;
+}
+.canvasjs-chart-toolbar div {
+  background-color: #e2fffc !important;
+  color: black !important;
+  left: 10px;
+}
+.canvasjs-chart-toolbar div div:hover {
+  background-color: #c2fdf7 !important;
 }
 .canvasjs-chart-canvas {
 }

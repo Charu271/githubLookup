@@ -1,0 +1,77 @@
+@import "../../Assets/constants.scss";
+.particles3 {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: $main-color;
+}
+.trending {
+  position: absolute;
+  top: 100px;
+}
+.repositories {
+  background-color: #1e2742;
+  color: white;
+  margin-top: 30px;
+  padding: 2%;
+  border-radius: 5px;
+  div {
+    margin-top: 10px;
+  }
+}
+.repoName {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  color: $header-card;
+  &:hover {
+    color: $header-card;
+  }
+}
+.repoInfo {
+  display: flex;
+  div {
+    margin: 6px;
+  }
+}
+.starBadge {
+  background-color: #c2385d;
+}
+.forkBadge {
+  background-color: #f58335;
+}
+.languageBadge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.autocomplete {
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+
+  padding: 0% 2%;
+  box-sizing: border-box;
+}
+.sunspotLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+}
+.textfield1 {
+  padding: 0;
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 0px;
+  border-color: 2px solid white !important;
+  &:focus {
+    outline: none;
+    border-width: 0px;
+  }
+}
+.desc {
+  font-size: 0.9rem;
+}

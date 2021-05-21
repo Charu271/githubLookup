@@ -1,14 +1,169 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import axios from "axios";
+import "./Trending.scss";
+import fork1 from "../../Assets/fork1.svg";
+import StarIcon from "@material-ui/icons/Star";
+import Particles from "react-particles-js";
+import { Autocomplete } from "@material-ui/lab";
+import TextField from "@material-ui/core/TextField";
+import { particles } from "../../Assets/particlesjs-config";
+import { colors } from "../../Assets/colors";
+import { languauges } from "../../Assets/languages.js";
+import SunspotLoaderComponent from "./SunSpotLoader";
+import Fade from "react-reveal/Fade";
 
 class Trending extends Component {
-    constructor()
-    render() {
-        return (
-            <div>
-                
-            </div>
-        );
+  constructor(props) {
+    super(props);
+    this.state = {
+      languages: languauges,
+      language: "javascript",
+      starredRepos: [],
+      loader: true,
+    };
+  }
+  setLanguauge = (e, value) => {
+    console.log(value);
+    this.setState({ language: value, loader: true }, () => {
+      this.getTopRepositories();
+    });
+  };
+  getTopRepositories = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.github.com/search/repositories?q=language:${this.state.language}&sort=stars&order=desc`,
+        {
+          headers: {
+            Authorization: "Token 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",
+          },
+        }
+      );
+      this.setState({ starredRepos: res.data.items, loader: false });
+      console.log(res.data);
+    } catch (e) {
+      console.log(e.message);
     }
+  };
+  componentDidMount() {
+    this.getTopRepositories();
+  }
+  render() {
+    return (
+      <div>
+        <Particles className="particles3" params={particles} />
+
+        <div className="trending">
+          {/* <button onClick={this.getTopRepositories}>
+            Get Top Repositories
+          </button> */}
+          <div className="row">
+            <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+              <Autocomplete
+                className="autocomplete"
+                freeSolo
+                id="free-solo-demo"
+                options={this.state.languages}
+                onChange={this.setLanguauge}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    placeholder="Search Languauge..."
+                    margin="normal"
+                    variant="standard"
+                    className="textfield1"
+                  />
+                )}
+              />
+            </div>
+          </div>
+
+          {this.state.loader ? (
+            <div className="sunspotLoader">
+              <SunspotLoaderComponent />
+            </div>
+          ) : (
+            <>
+              <div className="row">
+                {this.state.starredRepos.length > 0
+                  ? this.state.starredRepos.map((repo, i) => {
+                      if (i % 2 == 0) {
+                        return (
+                          <Fade left>
+                            <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 repositories">
+                              <div>
+                                <a href={repo.html_url} className="repoName">
+                                  {repo.name}
+                                </a>
+                              </div>
+                              <div className="repoInfo">
+                                <div
+                                  class="badge languageBadge"
+                                  style={{
+                                    backgroundColor: colors[repo.language],
+                                    color: "black",
+                                  }}
+                                >
+                                  {repo.language}
+                                </div>
+                                <div class="badge starBadge">
+                                  <StarIcon style={{ fontSize: "20px" }} />
+                                  &nbsp;&nbsp;
+                                  {repo.stargazers_count}
+                                </div>
+                                <div class="badge forkBadge">
+                                  <img src={fork1} />
+                                  &nbsp;&nbsp;
+                                  {repo.forks_count}
+                                </div>
+                              </div>
+                              <div className="desc">{repo.description}</div>
+                            </div>
+                          </Fade>
+                        );
+                      } else {
+                        return (
+                          <Fade right>
+                            <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 repositories">
+                              <div>
+                                <a href={repo.html_url} className="repoName">
+                                  {repo.name}
+                                </a>
+                              </div>
+                              <div className="repoInfo">
+                                <div
+                                  class="badge languageBadge"
+                                  style={{
+                                    backgroundColor: colors[repo.language],
+                                    color: "black",
+                                  }}
+                                >
+                                  {repo.language}
+                                </div>
+                                <div class="badge starBadge">
+                                  <StarIcon style={{ fontSize: "20px" }} />
+                                  &nbsp;&nbsp;
+                                  {repo.stargazers_count}
+                                </div>
+                                <div class="badge forkBadge">
+                                  <img src={fork1} />
+                                  &nbsp;&nbsp;
+                                  {repo.forks_count}
+                                </div>
+                              </div>
+                              <div className="desc">{repo.description}</div>
+                            </div>
+                          </Fade>
+                        );
+                      }
+                    })
+                  : null}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Trending;
