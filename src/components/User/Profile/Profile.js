@@ -16,7 +16,9 @@ class Profile extends Component {
             </div>
           </div>
           <div className="col-12 login">
-            <a href={user.html_url}>{user.login}</a>
+            <a target="_blank" href={user.html_url}>
+              {user.login}
+            </a>
           </div>
           <div className="col-12 repos">
             <div className="smCard">

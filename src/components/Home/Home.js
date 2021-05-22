@@ -26,7 +26,7 @@ class Home extends Component {
         this.props.setUserName(res.data);
       } catch (e) {
         console.log(e);
-        console.log("Invalid userName");
+        alert("Invalid userName");
       }
     }
   };

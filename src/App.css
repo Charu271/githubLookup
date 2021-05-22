@@ -17,6 +17,13 @@
   margin-top: 5px;
   background-color: #e2fffc !important;
 }
+@media screen and (max-width: 360px) {
+  .canvasjs-chart-toolbar button {
+    padding: 5px 5px !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
 .canvasjs-chart-toolbar > button > img {
   filter: invert(0%) !important;
 }
@@ -28,5 +35,16 @@
 .canvasjs-chart-toolbar div div:hover {
   background-color: #c2fdf7 !important;
 }
-.canvasjs-chart-canvas {
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px grey;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }

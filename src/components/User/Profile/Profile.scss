@@ -17,6 +17,11 @@
 .name {
   color: $header-card;
 }
+@media screen and (max-width: 400px) {
+  .name {
+    font-size: 0.95rem;
+  }
+}
 .login a {
   color: #e2fffc;
   text-decoration: none;
@@ -44,6 +49,18 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+@media screen and (max-width: 400px) {
+  .smCard {
+    height: 70px;
+    width: 110px;
+    font-size: small;
+  }
+}
+@media screen and (max-width: 300px) {
+  .smCard {
+    font-size: 0.65rem;
+  }
 }
 .name {
   margin: 2%;

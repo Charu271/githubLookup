@@ -7,7 +7,14 @@
 }
 .trending {
   position: absolute;
-  top: 100px;
+  top: 125px;
+  width: 100%;
+}
+.text {
+  color: #a2a2a3;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.4rem;
 }
 .repositories {
   background-color: #1e2742;
@@ -74,4 +81,34 @@
 }
 .desc {
   font-size: 0.9rem;
+}
+.loadbtn {
+  border: none;
+  outline: none;
+  padding: 1% 2%;
+  margin-bottom: 10px;
+  float: right;
+  border-radius: 6px;
+  margin-right: 2%;
+  background: linear-gradient(
+    to top right,
+    #25bfb6,
+    #53cec6,
+    #74ded7,
+    #91ede7,
+    #adfdf8
+  );
+  &:hover {
+    background: linear-gradient(
+      to top right,
+      #adfdf8,
+      #91ede7,
+      #74ded7,
+      #53cec6,
+      #25bfb6
+    );
+  }
+}
+.repoWrapper {
+  margin-bottom: 20px;
 }

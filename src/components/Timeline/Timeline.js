@@ -19,12 +19,10 @@ function TimelineComponent() {
   useEffect(async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-      console.log(user);
       const res = await axios.get(
         `https://api.github.com/users/${user.login}/received_events?page=1`
       );
       setactivity(res.data);
-      console.log(res);
     } catch (e) {
       console.log(e);
     }
@@ -78,7 +76,6 @@ function TimelineComponent() {
                 default:
                   event = "";
               }
-              console.log(event);
               return (
                 <>
                   <VerticalTimelineElement
@@ -89,14 +86,15 @@ function TimelineComponent() {
                       borderRight: "7px solid rgb(33, 150, 243) ",
                     }}
                     contentStyle={{
-                      background: "#25bfb6",
+                      background:
+                        "linear-gradient(to top right,#25bfb6,#53cec6,#74ded7,#91ede7,#adfdf8)",
                       color: "#fff",
                     }}
                   >
                     {/* <h3 className="vertical-timeline-element-title">
                   {element.actor.display_login}
                 </h3> */}
-                    <div className="row">
+                    <div className="row secondary">
                       <div className="col-3">
                         <div>
                           <img
@@ -106,8 +104,9 @@ function TimelineComponent() {
                         </div>
                       </div>
                       <div className="col-9">
-                        <div>
+                        <div className="content">
                           <a
+                            target="_blank"
                             href={`https://github.com/${element.actor.display_login}`}
                             className="actorName"
                           >
@@ -117,6 +116,7 @@ function TimelineComponent() {
                             {event == "forked" ? " forked " : null}
                             {event == "forked" ? (
                               <a
+                                target="_blank"
                                 href={element.payload.forkee.html_url}
                                 class="actorlink"
                               >
@@ -128,6 +128,7 @@ function TimelineComponent() {
                             {event == "forked" ? " from " : null}
                           </span>
                           <a
+                            target="_blank"
                             href={`https://github.com/${element.repo.name}`}
                             className="actorRepo"
                           >

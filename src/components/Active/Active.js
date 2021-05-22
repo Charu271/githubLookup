@@ -14,7 +14,9 @@ class Active extends Component {
     super(props);
     this.state = {
       topUsers: [],
+      init: 1,
       loader: true,
+      total: [],
     };
   }
   getTopUsers = async () => {
@@ -32,7 +34,6 @@ class Active extends Component {
       var data = res.data.items;
 
       for (var k = 0; k < data.length; k++) {
-        //console.log(data[i].login);
         axios
           .get(`https://api.github.com/users/${data[k].login}`, {
             headers: {
@@ -41,20 +42,24 @@ class Active extends Component {
           })
           .then((res) => {
             result.push(res.data);
-            console.log(result);
             if (result.length == 29) {
               result.sort(function (a, b) {
                 return b.followers - a.followers;
               });
-              this.setState({ topUsers: result, loader: false });
+              const arr = [...result];
+              result.length = 10;
+              this.setState({
+                topUsers: result,
+                loader: false,
+                total: arr,
+                init: 2,
+              });
             }
           })
           .catch((e) => {
             console.log(e);
           });
       }
-      //console.log(result);
-      //console.log(res.data.items);
     } catch (e) {
       console.log(e.message);
     }
@@ -62,6 +67,11 @@ class Active extends Component {
   componentDidMount() {
     this.getTopUsers();
   }
+  load = () => {
+    const arr = [...this.state.total];
+    arr.length = this.state.init * 10;
+    this.setState({ topUsers: arr, init: this.state.init + 1 });
+  };
   render() {
     return (
       <div>
@@ -73,75 +83,100 @@ class Active extends Component {
               <SunspotLoaderComponent />
             </div>
           ) : (
-            <div className="row">
-              {this.state.topUsers.map((user, i) => {
-                if (i % 2 == 0) {
-                  return (
-                    <Fade left>
-                      <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 topCard">
-                        <div className="row">
-                          <div className="col-3">
-                            <img src={user.avatar_url} className="userImage" />
-                          </div>
-                          <div className="col-9 userInformation">
-                            <div>
-                              {user.name}{" "}
-                              <a href={user.html_url} className="userLogin">
-                                {user.login}
-                              </a>
+            <>
+              <div className="row userWrapper">
+                {this.state.topUsers.map((user, i) => {
+                  if (i % 2 == 0) {
+                    return (
+                      <Fade left>
+                        <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 topCard">
+                          <div className="row">
+                            <div className="col-3">
+                              <img
+                                src={user.avatar_url}
+                                className="userImage"
+                              />
                             </div>
+                            <div className="col-9 userInformation">
+                              <div>
+                                {user.name}{" "}
+                                <a
+                                  target="_blank"
+                                  href={user.html_url}
+                                  className="userLogin"
+                                >
+                                  {user.login}
+                                </a>
+                              </div>
 
-                            <div>
-                              <PersonIcon style={{ fontSize: "22px" }} />
-                              &nbsp;&nbsp;{user.followers}
-                            </div>
-                            <div>
-                              {user.location != null ? (
-                                <LocationOnIcon style={{ fontSize: "22px" }} />
-                              ) : null}
-                              &nbsp;&nbsp;
-                              {user.location}
+                              <div>
+                                <PersonIcon style={{ fontSize: "22px" }} />
+                                &nbsp;&nbsp;{user.followers}
+                              </div>
+                              <div>
+                                {user.location != null ? (
+                                  <LocationOnIcon
+                                    style={{ fontSize: "22px" }}
+                                  />
+                                ) : null}
+                                &nbsp;&nbsp;
+                                {user.location}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </Fade>
-                  );
-                } else {
-                  return (
-                    <Fade right>
-                      <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 topCard">
-                        <div className="row">
-                          <div className="col-3">
-                            <img src={user.avatar_url} className="userImage" />
-                          </div>
-                          <div className="col-9 userInformation">
-                            <div>
-                              {user.name}{" "}
-                              <a href={user.html_url} className="userLogin">
-                                {user.login}
-                              </a>
+                      </Fade>
+                    );
+                  } else {
+                    return (
+                      <Fade right>
+                        <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 topCard">
+                          <div className="row">
+                            <div className="col-3">
+                              <img
+                                src={user.avatar_url}
+                                className="userImage"
+                              />
                             </div>
+                            <div className="col-9 userInformation">
+                              <div>
+                                {user.name}{" "}
+                                <a
+                                  target="_blank"
+                                  href={user.html_url}
+                                  className="userLogin"
+                                >
+                                  {user.login}
+                                </a>
+                              </div>
 
-                            <div>
-                              <PersonIcon style={{ fontSize: "22px" }} />
-                              &nbsp;&nbsp;{user.followers}
-                            </div>
-                            <div>
-                              {user.location != null ? (
-                                <LocationOnIcon style={{ fontSize: "22px" }} />
-                              ) : null}
-                              &nbsp;&nbsp;
-                              {user.location}
+                              <div>
+                                <PersonIcon style={{ fontSize: "22px" }} />
+                                &nbsp;&nbsp;{user.followers}
+                              </div>
+                              <div>
+                                {user.location != null ? (
+                                  <LocationOnIcon
+                                    style={{ fontSize: "22px" }}
+                                  />
+                                ) : null}
+                                &nbsp;&nbsp;
+                                {user.location}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </Fade>
-                  );
-                }
-              })}
-            </div>
+                      </Fade>
+                    );
+                  }
+                })}
+              </div>
+              {this.state.init <= 3 ? (
+                <button onClick={this.load} className="loadbtn">
+                  Load more
+                </button>
+              ) : null}
+            </>
           )}
         </div>
       </div>

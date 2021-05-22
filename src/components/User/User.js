@@ -12,6 +12,7 @@ import Repo from "./Repo/Repo";
 import { colors } from "../../Assets/colors";
 import { particles } from "../../Assets/particlesjs-config";
 import ScatterBoxLoaderComponent from "./Loader";
+import SunspotLoaderComponent from "../Trending/SunSpotLoader";
 import TimeLine from "../Timeline/Timeline";
 
 class User extends Component {
@@ -31,12 +32,10 @@ class User extends Component {
   }
 
   fetchTopRepos = (e) => {
-    //console.log(this.state.repos);
     var result = [...this.state.repos];
     result.sort(function (a, b) {
       return b[e.target.value] - a[e.target.value];
     });
-    //console.log(e.target.value);
     if (result.length > 10) result.length = 10;
     this.setState({ topRepos: result });
   };
@@ -47,38 +46,36 @@ class User extends Component {
   }
   componentDidMount() {
     this.animate();
-    axios
-      .get(
-        `https://api.github.com/users/${this.state.user.login}/repos?per_page=1000`,
-        {
-          headers: {
-            Authorization: "Token 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",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-
-        this.setState({ repos: res.data }, () => {
-          var result = [...this.state.repos];
-          result.sort(function (a, b) {
-            return b["forks"] - a["forks"];
+    if (this.state.repos.length == 0) {
+      axios
+        .get(
+          `https://api.github.com/users/${this.state.user.login}/repos?per_page=1000`,
+          {
+            headers: {
+              Authorization: "Token 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",
+            },
+          }
+        )
+        .then((res) => {
+          this.setState({ repos: res.data }, () => {
+            var result = [...this.state.repos];
+            result.sort(function (a, b) {
+              return b["forks"] - a["forks"];
+            });
+            if (result.length > 10) result.length = 10;
+            this.setState({ topRepos: result });
           });
-          if (result.length > 10) result.length = 10;
-          this.setState({ topRepos: result });
+          this.getWeeklyContributions();
+          this.getTopLanguages();
+          this.getStarred();
+        })
+        .catch((err) => {
+          console.log(err.message);
         });
-        //this.getTopUsers();
-        this.getWeeklyContributions();
-        this.getTopLanguages();
-        this.getStarred();
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    }
   }
 
   getStarred = () => {
-    const color = ["#bb86fc", "#ee7a8b", "#f9c270", "#64cce8"];
     const result = this.state.repos.map((repo, i) => {
       return {
         label: repo.name,
@@ -116,8 +113,6 @@ class User extends Component {
             if (commit[j] > max) max = commit[j];
           }
           max = max + 20;
-          //console.log(commit);
-          //console.log(n, last);
           if (n == last) {
             const result = commit.map((d, i) => {
               return { x: i + 1, y: (commit[i] / max) * 100 };
@@ -128,7 +123,6 @@ class User extends Component {
           }
         })
         .catch((err) => {
-          console.log(err);
           console.log(err.message);
         });
     }
@@ -162,7 +156,6 @@ class User extends Component {
               return b.value - a.value;
             });
             if (result.length > 5) result.length = 5;
-            console.log(result);
 
             result = result.map((data, index) => {
               return {
@@ -174,8 +167,6 @@ class User extends Component {
             const color = result.map((data) => {
               return colors[data.label];
             });
-            console.log(result);
-            console.log(color);
             this.setState({ pieData: result, pieColor: color });
           }
         }
@@ -194,20 +185,24 @@ class User extends Component {
         this.state.data.length == 0 &&
         this.state.pieData.length == 0 &&
         this.state.starData.length == 0 ? (
-          <ScatterBoxLoaderComponent />
+          <div className="sunspotLoader1">
+            <SunspotLoaderComponent />
+          </div>
         ) : (
           <div>
             <Particles className="particles1" params={particles} />
             <div className="userProfile row">
               <Profile userName={this.state.user} />
               <div className="row">
-                <div className="selector col-6 offset-6 col-sm-4 offset-8">
+                <div className="selector col-11 offset-1 col-sm-5 offset-sm-7 col-md-4 offset-md-8">
                   <div className="row">
                     <div
-                      className="col-6"
+                      className="col-6 division1"
                       style={{
-                        backgroundColor:
-                          this.state.type == "stats" ? "#25bfb6" : "#15182c",
+                        background:
+                          this.state.type == "stats"
+                            ? "linear-gradient(to top right,#25bfb6,#53cec6,#74ded7,#91ede7,#adfdf8)"
+                            : "#15182c",
                         color: this.state.type == "stats" ? "black" : "white",
                       }}
                       onClick={() => this.setType("stats")}
@@ -215,10 +210,12 @@ class User extends Component {
                       Statistics
                     </div>
                     <div
-                      className="col-6"
+                      className="col-6 division2"
                       style={{
-                        backgroundColor:
-                          this.state.type == "timeline" ? "#25bfb6" : "#15182c",
+                        background:
+                          this.state.type == "timeline"
+                            ? "linear-gradient(to top right,#25bfb6,#53cec6,#74ded7,#91ede7,#adfdf8)"
+                            : "#15182c",
                         color:
                           this.state.type == "timeline" ? "black" : "white",
                       }}
@@ -256,10 +253,7 @@ class User extends Component {
                           Top repositories{" "}
                           <span className="by">by&nbsp;&nbsp;&nbsp;</span>
                         </div>
-                        <select
-                          onChange={this.fetchTopRepos}
-                          className="form-select"
-                        >
+                        <select onChange={this.fetchTopRepos} className="form">
                           <option value="forks">Forks</option>
                           <option value="stargazers_count">Stars</option>
                           <option value="size">Size</option>

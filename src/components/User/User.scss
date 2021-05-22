@@ -1,14 +1,15 @@
 @import "../../Assets/constants.scss";
 
-.outer-container {
-  width: 100%;
-  height: 100%;
-}
+// .outer-container {
+//   width: 100%;
+//   height: 100%;
+// }
 .userProfile {
   overflow-x: hidden;
   padding: 5px;
   position: absolute;
-  top: 10%;
+  top: 15%;
+  width: 100%;
 }
 .wrapper {
   padding: 3%;
@@ -22,8 +23,9 @@
 .canvas-js-toolbar {
   right: 20px;
 }
-.form-select {
+.form {
   width: 20%;
+  font-size: 1rem;
 }
 .area,
 .twoCharts {
@@ -59,17 +61,53 @@ select {
   height: 40px;
   margin-top: 12px;
 }
-.form-select {
+.form {
   background-color: #e2fffc;
   border: none;
   outline: none;
+  width: 100px;
+  border-radius: 5px;
+}
+@media screen and(max-width:495px) {
+  .header {
+    font-size: 2rem;
+    flex-direction: column;
+  }
+  .by {
+    font-size: 1rem;
+  }
+}
+@media screen and(max-width:325px) {
+  .header {
+    font-size: 1.7rem;
+  }
+  .name h2 {
+    font-size: 1rem !important;
+  }
 }
 .selector {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .selector .row div {
-  border: 1px solid white;
+  border: 1px solid #a2a2a3;
   padding: 3%;
   color: white;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.division1 {
+  border-radius: 6px 0px 0px 6px;
+}
+.division2 {
+  border-radius: 0px 6px 6px 0px;
+}
+.sunspotLoader1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 20%;
 }

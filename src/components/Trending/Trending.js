@@ -19,34 +19,48 @@ class Trending extends Component {
       languages: languauges,
       language: "javascript",
       starredRepos: [],
+      total: [],
       loader: true,
+      init: 1,
     };
   }
   setLanguauge = (e, value) => {
-    console.log(value);
     this.setState({ language: value, loader: true }, () => {
       this.getTopRepositories();
     });
   };
   getTopRepositories = async () => {
-    try {
-      const res = await axios.get(
-        `https://api.github.com/search/repositories?q=language:${this.state.language}&sort=stars&order=desc`,
-        {
-          headers: {
-            Authorization: "Token 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",
-          },
-        }
-      );
-      this.setState({ starredRepos: res.data.items, loader: false });
-      console.log(res.data);
-    } catch (e) {
-      console.log(e.message);
+    if (this.state.language != null) {
+      try {
+        const res = await axios.get(
+          `https://api.github.com/search/repositories?q=language:${this.state.language}&sort=stars&order=desc`,
+          {
+            headers: {
+              Authorization: "Token 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",
+            },
+          }
+        );
+        var arr = [...res.data.items];
+        arr.length = 10;
+        this.setState({
+          starredRepos: arr,
+          loader: false,
+          total: res.data.items,
+          init: 2,
+        });
+      } catch (e) {
+        console.log(e.message);
+      }
     }
   };
   componentDidMount() {
     this.getTopRepositories();
   }
+  load = () => {
+    const arr = [...this.state.total];
+    arr.length = this.state.init * 10;
+    this.setState({ starredRepos: arr, init: this.state.init + 1 });
+  };
   render() {
     return (
       <div>
@@ -76,88 +90,110 @@ class Trending extends Component {
               />
             </div>
           </div>
-
-          {this.state.loader ? (
-            <div className="sunspotLoader">
-              <SunspotLoaderComponent />
+          {this.state.language == null ? (
+            <div className="row">
+              <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 text">
+                Select any language
+              </div>
             </div>
           ) : (
             <>
-              <div className="row">
-                {this.state.starredRepos.length > 0
-                  ? this.state.starredRepos.map((repo, i) => {
-                      if (i % 2 == 0) {
-                        return (
-                          <Fade left>
-                            <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 repositories">
-                              <div>
-                                <a href={repo.html_url} className="repoName">
-                                  {repo.name}
-                                </a>
-                              </div>
-                              <div className="repoInfo">
-                                <div
-                                  class="badge languageBadge"
-                                  style={{
-                                    backgroundColor: colors[repo.language],
-                                    color: "black",
-                                  }}
-                                >
-                                  {repo.language}
+              {this.state.loader ? (
+                <div className="sunspotLoader">
+                  <SunspotLoaderComponent />
+                </div>
+              ) : (
+                <>
+                  <div className="row repoWrapper">
+                    {this.state.starredRepos.length > 0
+                      ? this.state.starredRepos.map((repo, i) => {
+                          if (i % 2 == 0) {
+                            return (
+                              <Fade left>
+                                <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 repositories">
+                                  <div>
+                                    <a
+                                      href={repo.html_url}
+                                      target="_blank"
+                                      className="repoName"
+                                    >
+                                      {repo.name}
+                                    </a>
+                                  </div>
+                                  <div className="repoInfo">
+                                    <div
+                                      class="badge languageBadge"
+                                      style={{
+                                        backgroundColor: colors[repo.language],
+                                        color: "black",
+                                      }}
+                                    >
+                                      {repo.language}
+                                    </div>
+                                    <div class="badge starBadge">
+                                      <StarIcon style={{ fontSize: "20px" }} />
+                                      &nbsp;&nbsp;
+                                      {repo.stargazers_count}
+                                    </div>
+                                    <div class="badge forkBadge">
+                                      <img src={fork1} />
+                                      &nbsp;&nbsp;
+                                      {repo.forks_count}
+                                    </div>
+                                  </div>
+                                  <div className="desc">{repo.description}</div>
                                 </div>
-                                <div class="badge starBadge">
-                                  <StarIcon style={{ fontSize: "20px" }} />
-                                  &nbsp;&nbsp;
-                                  {repo.stargazers_count}
+                              </Fade>
+                            );
+                          } else {
+                            return (
+                              <Fade right>
+                                <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 repositories">
+                                  <div>
+                                    <a
+                                      href={repo.html_url}
+                                      target="_blank"
+                                      className="repoName"
+                                    >
+                                      {repo.name}
+                                    </a>
+                                  </div>
+                                  <div className="repoInfo">
+                                    <div
+                                      class="badge languageBadge"
+                                      style={{
+                                        backgroundColor: colors[repo.language],
+                                        color: "black",
+                                      }}
+                                    >
+                                      {repo.language}
+                                    </div>
+                                    <div class="badge starBadge">
+                                      <StarIcon style={{ fontSize: "20px" }} />
+                                      &nbsp;&nbsp;
+                                      {repo.stargazers_count}
+                                    </div>
+                                    <div class="badge forkBadge">
+                                      <img src={fork1} />
+                                      &nbsp;&nbsp;
+                                      {repo.forks_count}
+                                    </div>
+                                  </div>
+                                  <div className="desc">{repo.description}</div>
                                 </div>
-                                <div class="badge forkBadge">
-                                  <img src={fork1} />
-                                  &nbsp;&nbsp;
-                                  {repo.forks_count}
-                                </div>
-                              </div>
-                              <div className="desc">{repo.description}</div>
-                            </div>
-                          </Fade>
-                        );
-                      } else {
-                        return (
-                          <Fade right>
-                            <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 repositories">
-                              <div>
-                                <a href={repo.html_url} className="repoName">
-                                  {repo.name}
-                                </a>
-                              </div>
-                              <div className="repoInfo">
-                                <div
-                                  class="badge languageBadge"
-                                  style={{
-                                    backgroundColor: colors[repo.language],
-                                    color: "black",
-                                  }}
-                                >
-                                  {repo.language}
-                                </div>
-                                <div class="badge starBadge">
-                                  <StarIcon style={{ fontSize: "20px" }} />
-                                  &nbsp;&nbsp;
-                                  {repo.stargazers_count}
-                                </div>
-                                <div class="badge forkBadge">
-                                  <img src={fork1} />
-                                  &nbsp;&nbsp;
-                                  {repo.forks_count}
-                                </div>
-                              </div>
-                              <div className="desc">{repo.description}</div>
-                            </div>
-                          </Fade>
-                        );
-                      }
-                    })
-                  : null}
-              </div>
+                              </Fade>
+                            );
+                          }
+                        })
+                      : null}
+                  </div>
+                  {this.state.init <= 3 ? (
+                    <button onClick={this.load} className="loadbtn">
+                      Load more
+                    </button>
+                  ) : null}
+                </>
+              )}
             </>
           )}
         </div>

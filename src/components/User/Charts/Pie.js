@@ -3,13 +3,11 @@ import { CanvasJSChart } from "canvasjs-react-charts";
 
 class Pie extends Component {
   render() {
-    console.log(this.props.pieData);
     return (
       <CanvasJSChart
         options={{
           animationEnabled: true,
           exportEnabled: true,
-          colorSet: this.props.pieColor,
           theme: "dark1",
           backgroundColor: "#1E2742", // "light1", "dark1", "dark2"
           title: {
