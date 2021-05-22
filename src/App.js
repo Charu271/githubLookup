@@ -13,6 +13,7 @@ import User from "./components/User/User";
 import Navbar from "./components/Navbar/Navbar";
 import Active from "./components/Active/Active";
 import Trending from "./components/Trending/Trending";
+import Timeline from "./components/Timeline/Timeline";
 
 const history = createBrowserHistory();
 console.log(history);
@@ -44,6 +45,9 @@ class App extends React.Component {
           </Route>
           <Route path="/topRepos">
             <Trending />
+          </Route>
+          <Route path="/timeline">
+            <Timeline />
           </Route>
         </Switch>
         <Link to="/user" ref={this.linkRef} style={{ display: "none" }}>

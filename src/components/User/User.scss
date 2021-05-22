@@ -64,3 +64,12 @@ select {
   border: none;
   outline: none;
 }
+.selector {
+  margin-top: 20px;
+}
+.selector .row div {
+  border: 1px solid white;
+  padding: 3%;
+  color: white;
+  cursor: pointer;
+}

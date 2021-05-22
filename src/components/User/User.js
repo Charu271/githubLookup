@@ -12,6 +12,7 @@ import Repo from "./Repo/Repo";
 import { colors } from "../../Assets/colors";
 import { particles } from "../../Assets/particlesjs-config";
 import ScatterBoxLoaderComponent from "./Loader";
+import TimeLine from "../Timeline/Timeline";
 
 class User extends Component {
   constructor(props) {
@@ -22,9 +23,8 @@ class User extends Component {
       pieData: [],
       starData: [],
       topRepos: [],
-
       pieColor: [],
-
+      type: "stats",
       user: JSON.parse(localStorage.getItem("user")),
       loader: true,
     };
@@ -184,6 +184,9 @@ class User extends Component {
       }
     });
   };
+  setType = (val) => {
+    this.setState({ type: val });
+  };
   render() {
     return (
       <div className="outer-container">
@@ -197,78 +200,84 @@ class User extends Component {
             <Particles className="particles1" params={particles} />
             <div className="userProfile row">
               <Profile userName={this.state.user} />
-              <div className="col-12 parent">
-                {this.state.data.length > 0 ? (
-                  <Area data={this.state.data} className="area" />
-                ) : null}
-              </div>
-              {/* <div className="row twoCharts justify-content-center align-items-center"> */}
-              <div class="col-12 parent">
-                {this.state.pieData.length > 0 ? (
-                  <Pie
-                    pieData={this.state.pieData}
-                    pieColor={this.state.pieColor}
-                  />
-                ) : null}
-              </div>
-              <div class="col-12  parent">
-                {this.state.starData.length > 0 ? (
-                  <Column starData={this.state.starData} />
-                ) : null}
-              </div>
-              {/* </div> */}
-              <div className="topRepositories">
-                <div className="select row">
-                  <div className="header">
-                    <div>
-                      Top repositories{" "}
-                      <span className="by">by&nbsp;&nbsp;&nbsp;</span>
-                    </div>
-                    <select
-                      onChange={this.fetchTopRepos}
-                      className="form-select"
+              <div className="row">
+                <div className="selector col-6 offset-6 col-sm-4 offset-8">
+                  <div className="row">
+                    <div
+                      className="col-6"
+                      style={{
+                        backgroundColor:
+                          this.state.type == "stats" ? "#25bfb6" : "#15182c",
+                        color: this.state.type == "stats" ? "black" : "white",
+                      }}
+                      onClick={() => this.setType("stats")}
                     >
-                      <option value="forks">Forks</option>
-                      <option value="stargazers_count">Stars</option>
-                      <option value="size">Size</option>
-                    </select>
-                  </div>
-                  <div className="row wrapper">
-                    {this.state.topRepos.map((repo) => (
-                      <div className="col-12 col-sm-6 col-md-4 ">
-                        <Repo repo={repo} />
-                      </div>
-                    ))}
+                      Statistics
+                    </div>
+                    <div
+                      className="col-6"
+                      style={{
+                        backgroundColor:
+                          this.state.type == "timeline" ? "#25bfb6" : "#15182c",
+                        color:
+                          this.state.type == "timeline" ? "black" : "white",
+                      }}
+                      onClick={() => this.setType("timeline")}
+                    >
+                      Timeline
+                    </div>
                   </div>
                 </div>
-                <br />
-                <br />
-
-                {/* <select>
-          <option value="javascript">Javascript</option>
-          <option value="java">Java</option>
-          <option value="css">CSS</option>
-          <option value="html">HTML</option>
-          <option value="php">PHP</option>
-          <option value="c++">C++</option>
-          <option value="c">C</option>
-          <option value="python">Python</option>
-          <option value="ruby">Ruby</option>
-          <option value="r">R</option>
-          <option value="c#">C#</option>
-          <option value="typescript">Typescript</option>
-          <option value="shell">Shell</option>
-          <option value="swift">Swift</option>
-          <option value="dart">Dart</option>
-          <option value="kotlin">Kotlin</option>
-          <option value="go">Go</option>
-        </select>*/}
               </div>
-              //{" "}
-              {/* <div className="col-4 col-sm-3 col-md-2">
-          <Sidebar />
-        </div> */}
-              {/* <div className="col-8 col-sm-9 col-md-10"> */}
+              {this.state.type == "stats" ? (
+                <>
+                  <div className="col-12 parent">
+                    {this.state.data.length > 0 ? (
+                      <Area data={this.state.data} className="area" />
+                    ) : null}
+                  </div>
+                  <div class="col-12 parent">
+                    {this.state.pieData.length > 0 ? (
+                      <Pie
+                        pieData={this.state.pieData}
+                        pieColor={this.state.pieColor}
+                      />
+                    ) : null}
+                  </div>
+                  <div class="col-12  parent">
+                    {this.state.starData.length > 0 ? (
+                      <Column starData={this.state.starData} />
+                    ) : null}
+                  </div>
+                  <div className="topRepositories">
+                    <div className="select row">
+                      <div className="header">
+                        <div>
+                          Top repositories{" "}
+                          <span className="by">by&nbsp;&nbsp;&nbsp;</span>
+                        </div>
+                        <select
+                          onChange={this.fetchTopRepos}
+                          className="form-select"
+                        >
+                          <option value="forks">Forks</option>
+                          <option value="stargazers_count">Stars</option>
+                          <option value="size">Size</option>
+                        </select>
+                      </div>
+                      <div className="row wrapper">
+                        {this.state.topRepos.map((repo) => (
+                          <div className="col-12 col-sm-6 col-md-4 ">
+                            <Repo repo={repo} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <TimeLine />
+              )}
             </div>
           </div>
         )}
