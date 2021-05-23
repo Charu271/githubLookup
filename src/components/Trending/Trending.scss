@@ -1,0 +1,114 @@
+@import "../../Assets/constants.scss";
+.particles3 {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  
+}
+.trending {
+  position: absolute;
+  top: 125px;
+  width: 100%;
+}
+.text {
+  color: #a2a2a3;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.4rem;
+}
+.repositories {
+  background-color: #1e2742;
+  color: white;
+  margin-top: 30px;
+  padding: 2%;
+  border-radius: 5px;
+  div {
+    margin-top: 10px;
+  }
+}
+.repoName {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  color: $header-card;
+  &:hover {
+    color: $header-card;
+  }
+}
+.repoInfo {
+  display: flex;
+  div {
+    margin: 6px;
+  }
+}
+.starBadge {
+  background-color: #c2385d;
+}
+.forkBadge {
+  background-color: #f58335;
+}
+.languageBadge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.autocomplete {
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+
+  padding: 0% 2%;
+  box-sizing: border-box;
+}
+.sunspotLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+}
+.textfield1 {
+  padding: 0;
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 0px;
+  border-color: 2px solid white !important;
+  &:focus {
+    outline: none;
+    border-width: 0px;
+  }
+}
+.desc {
+  font-size: 0.9rem;
+}
+.loadbtn {
+  border: none;
+  outline: none;
+  padding: 1% 2%;
+  margin-bottom: 10px;
+  float: right;
+  border-radius: 6px;
+  margin-right: 2%;
+  background: linear-gradient(
+    to top right,
+    #25bfb6,
+    #53cec6,
+    #74ded7,
+    #91ede7,
+    #adfdf8
+  );
+  &:hover {
+    background: linear-gradient(
+      to top right,
+      #adfdf8,
+      #91ede7,
+      #74ded7,
+      #53cec6,
+      #25bfb6
+    );
+  }
+}
+.repoWrapper {
+  margin-bottom: 20px;
+}

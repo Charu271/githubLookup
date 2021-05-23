@@ -1,0 +1,53 @@
+
+#darkMode {
+   
+    background: transparent url("../moon.png") no-repeat center;
+    background-size: 30px 30px;
+    width: 45px;
+    height: 45px;
+    filter: grayscale(100%);
+    border: none;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
+    margin-top: 10px;
+  }
+  
+  #darkMode:hover,
+  #darkMode:focus {
+   
+    filter: grayscale(100%);
+    background-color:  #15182c;
+    cursor: pointer;
+  }
+  
+  #darkMode.clicked {
+    filter: none !important;
+    background-color: #15182c;
+  
+  }
+
+  
+:root {
+  
+  --blue: #000080 ;
+  --white: #15182c;
+}
+body.light {
+  --background-color: var(--white);
+ 
+}
+body.dark {
+  --background-color: var(--blue);
+  
+
+}
+body {
+  background: var(--background-color);
+
+
+  transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
+}
+
+nav {
+  background: var(--background-color);
+}

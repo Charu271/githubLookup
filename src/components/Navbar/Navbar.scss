@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
+@import "../../Assets/constants.scss";
+.navbar {
+  
+ 
+  overflow-x: hidden;
+  width: 100%;
+}
+.navbar-nav a {
+  color: #9497a3;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.navbar a:hover {
+  color: #747681;
+}
+.navbar-brand {
+  //   letter-spacing: 0.2rem;
+  //   font-family: "Pattaya", sans-serif;
+  //   color: $header-card;
+  color: #747681;
+}
+.navbar-toggler {
+  outline: none;
+  border: none;
+}
+.nav-item {
+  margin-right: 15px;
+}
+.nav-link {
+  margin-top: 10px;
+}
+

@@ -1,0 +1,67 @@
+@import "../../Assets/constants.scss";
+.particles2 {
+  width: 100vw;
+  height: 100vh;
+ 
+  position: fixed;
+}
+
+.users {
+  position: absolute;
+  top: 100px;
+}
+.userImage {
+  height: 100px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.topCard {
+  margin-top: 20px;
+  background-color: #1e2742;
+  padding: 2%;
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #a2a2a3;
+}
+
+.userInformation div {
+  margin: 10px;
+}
+.userLogin {
+  text-decoration: none;
+  color: $header-card;
+  &:hover {
+    color: $header-card;
+  }
+}
+.loadbtn {
+  border: none;
+  outline: none;
+  padding: 1% 2%;
+  margin-bottom: 10px;
+  float: right;
+  border-radius: 6px;
+  margin-right: 2%;
+  background: linear-gradient(
+    to top right,
+    #25bfb6,
+    #53cec6,
+    #74ded7,
+    #91ede7,
+    #adfdf8
+  );
+  &:hover {
+    background: linear-gradient(
+      to top right,
+      #adfdf8,
+      #91ede7,
+      #74ded7,
+      #53cec6,
+      #25bfb6
+    );
+  }
+}
+.userWrapper {
+  margin-bottom: 20px;
+}
