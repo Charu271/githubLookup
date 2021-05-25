@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
 @import "../../Assets/constants.scss";
 .navbar {
-  background-color: #15182c;
-  box-shadow: rgba(32, 32, 51, 0.25) 0px 6px 12px -2px,
-    rgba(7, 7, 7, 0.3) 0px 3px 7px -3px;
+  
+ 
   overflow-x: hidden;
-  width: 99%;
+  width: 100%;
 }
 .navbar-nav a {
   color: rgb(240, 240, 240);

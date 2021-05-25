@@ -203,7 +203,7 @@ class User extends Component {
                       className="col-6 division1"
                       style={{
                         background:
-                          this.state.type === "stats" ? "#728AF4" : "#15182c",
+                          this.state.type === "stats" ? "#728AF4" : "",
                         color: this.state.type === "stats" ? "black" : "white",
                       }}
                       onClick={() => this.setType("stats")}
@@ -216,7 +216,7 @@ class User extends Component {
                         background:
                           this.state.type === "timeline"
                             ? "#728AF4"
-                            : "#15182c",
+                            : "",
                         color:
                           this.state.type === "timeline" ? "black" : "white",
                       }}
