@@ -25,6 +25,7 @@ class User extends Component {
       type: "stats",
       user: JSON.parse(localStorage.getItem("user")),
       loader: true,
+      load: true,
     };
   }
 
@@ -176,7 +177,7 @@ class User extends Component {
     this.setState({
       type: val,
     });
-    // window.location.reload();
+    // if (val == "stats") window.location.reload();
   };
   render() {
     return (
@@ -226,7 +227,11 @@ class User extends Component {
                   </div>
                 </div>
               </div>
-              {this.state.type === "stats" ? (
+              <div
+                style={{
+                  display: this.state.type === "stats" ? "block" : "none",
+                }}
+              >
                 <>
                   <div
                     className="col-12 parent"
@@ -271,9 +276,20 @@ class User extends Component {
                     </div>
                   </div>
                 </>
-              ) : (
+              </div>
+
+              <div
+                style={{
+                  display: this.state.type == "timeline" ? "block" : "none",
+                }}
+              >
                 <TimeLine />
-              )}
+              </div>
+              {/* {this.state.type === "stats" ? (
+               
+              ) : (
+                
+              )} */}
             </div>
           )}
         </div>
