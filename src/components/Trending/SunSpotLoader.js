@@ -3,8 +3,8 @@ const SunspotLoaderComponent = () => {
   return (
     <>
       <SunspotLoader
-        gradientColors={["#25bfb6", "#C1FCF6"]}
-        shadowColor={"#f5fffe"}
+        gradientColors={["#728AF4", "#d6d4ff"]}
+        shadowColor={"#dbd9ff"}
         desktopSize={"128px"}
         mobileSize={"100px"}
       />

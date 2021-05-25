@@ -15,7 +15,7 @@
   border-radius: 2px;
   margin-left: 5px;
   margin-top: 5px;
-  background-color: #e2fffc !important;
+  background-color: #d1daff !important;
 }
 @media screen and (max-width: 360px) {
   .canvasjs-chart-toolbar button {
@@ -28,12 +28,12 @@
   filter: invert(0%) !important;
 }
 .canvasjs-chart-toolbar div {
-  background-color: #e2fffc !important;
+  background-color: #d1daff !important;
   color: black !important;
   left: 10px;
 }
 .canvasjs-chart-toolbar div div:hover {
-  background-color: #c2fdf7 !important;
+  background-color: #728af4 !important;
 }
 ::-webkit-scrollbar {
   width: 5px;

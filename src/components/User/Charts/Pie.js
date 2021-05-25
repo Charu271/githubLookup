@@ -17,9 +17,6 @@ class Pie extends Component {
           data: [
             {
               type: "pie",
-              indexLabelFontColor: "#a2a2a3",
-              indexLabel: "{label}: {y}%",
-              startAngle: -90,
               dataPoints: this.props.pieData,
             },
           ],

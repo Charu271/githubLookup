@@ -42,7 +42,7 @@ class Active extends Component {
           })
           .then((res) => {
             result.push(res.data);
-            if (result.length == 29) {
+            if (result.length === 29) {
               result.sort(function (a, b) {
                 return b.followers - a.followers;
               });
@@ -86,15 +86,16 @@ class Active extends Component {
             <>
               <div className="row userWrapper">
                 {this.state.topUsers.map((user, i) => {
-                  if (i % 2 == 0) {
+                  if (i % 2 === 0) {
                     return (
-                      <Fade left>
+                      <Fade left key={i}>
                         <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 topCard">
                           <div className="row">
                             <div className="col-3">
                               <img
                                 src={user.avatar_url}
                                 className="userImage"
+                                alt="UserImage"
                               />
                             </div>
                             <div className="col-9 userInformation">
@@ -102,6 +103,7 @@ class Active extends Component {
                                 {user.name}{" "}
                                 <a
                                   target="_blank"
+                                  rel="noopener noreferrer"
                                   href={user.html_url}
                                   className="userLogin"
                                 >
@@ -129,13 +131,14 @@ class Active extends Component {
                     );
                   } else {
                     return (
-                      <Fade right>
+                      <Fade right key={i}>
                         <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 topCard">
                           <div className="row">
                             <div className="col-3">
                               <img
                                 src={user.avatar_url}
                                 className="userImage"
+                                alt="userImage"
                               />
                             </div>
                             <div className="col-9 userInformation">
@@ -143,6 +146,7 @@ class Active extends Component {
                                 {user.name}{" "}
                                 <a
                                   target="_blank"
+                                  rel="noopener noreferrer"
                                   href={user.html_url}
                                   className="userLogin"
                                 >

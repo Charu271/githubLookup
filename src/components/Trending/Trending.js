@@ -67,9 +67,6 @@ class Trending extends Component {
         <Particles className="particles3" params={particles} />
 
         <div className="trending">
-          {/* <button onClick={this.getTopRepositories}>
-            Get Top Repositories
-          </button> */}
           <div className="row">
             <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
               <Autocomplete
@@ -90,7 +87,7 @@ class Trending extends Component {
               />
             </div>
           </div>
-          {this.state.language == null ? (
+          {this.state.language === null ? (
             <div className="row">
               <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 text">
                 Select any language
@@ -107,22 +104,23 @@ class Trending extends Component {
                   <div className="row repoWrapper">
                     {this.state.starredRepos.length > 0
                       ? this.state.starredRepos.map((repo, i) => {
-                          if (i % 2 == 0) {
+                          if (i % 2 === 0) {
                             return (
-                              <Fade left>
+                              <Fade left key={i}>
                                 <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 repositories">
                                   <div>
                                     <a
                                       href={repo.html_url}
                                       target="_blank"
-                                      className="repoName"
+                                      rel="noopener noreferrer"
+                                      className="repositoryName"
                                     >
                                       {repo.name}
                                     </a>
                                   </div>
                                   <div className="repoInfo">
                                     <div
-                                      class="badge languageBadge"
+                                      className="badge languageBadge"
                                       style={{
                                         backgroundColor: colors[repo.language],
                                         color: "black",
@@ -130,13 +128,13 @@ class Trending extends Component {
                                     >
                                       {repo.language}
                                     </div>
-                                    <div class="badge starBadge">
+                                    <div className="badge starBadge">
                                       <StarIcon style={{ fontSize: "20px" }} />
                                       &nbsp;&nbsp;
                                       {repo.stargazers_count}
                                     </div>
-                                    <div class="badge forkBadge">
-                                      <img src={fork1} />
+                                    <div className="badge forkBadge">
+                                      <img src={fork1} alt="Fork" />
                                       &nbsp;&nbsp;
                                       {repo.forks_count}
                                     </div>
@@ -147,20 +145,21 @@ class Trending extends Component {
                             );
                           } else {
                             return (
-                              <Fade right>
+                              <Fade right key={i}>
                                 <div className="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 repositories">
                                   <div>
                                     <a
                                       href={repo.html_url}
                                       target="_blank"
-                                      className="repoName"
+                                      rel="noopener noreferrer"
+                                      className="repositoryName"
                                     >
                                       {repo.name}
                                     </a>
                                   </div>
                                   <div className="repoInfo">
                                     <div
-                                      class="badge languageBadge"
+                                      className="badge languageBadge"
                                       style={{
                                         backgroundColor: colors[repo.language],
                                         color: "black",
@@ -168,13 +167,13 @@ class Trending extends Component {
                                     >
                                       {repo.language}
                                     </div>
-                                    <div class="badge starBadge">
+                                    <div className="badge starBadge">
                                       <StarIcon style={{ fontSize: "20px" }} />
                                       &nbsp;&nbsp;
                                       {repo.stargazers_count}
                                     </div>
-                                    <div class="badge forkBadge">
-                                      <img src={fork1} />
+                                    <div className="badge forkBadge">
+                                      <img src={fork1} alt="Fork" />
                                       &nbsp;&nbsp;
                                       {repo.forks_count}
                                     </div>

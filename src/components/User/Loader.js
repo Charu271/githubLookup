@@ -14,13 +14,6 @@ const ScatterBoxLoaderComponent = () => {
           desktopSize={"90px"}
           mobileSize={"64px"}
         />
-        {/* <BoxesLoader
-        boxColor={"#6366F1"}
-        style={{ marginBottom: "20px" }}
-        desktopSize={"128px"}
-        mobileSize={"80px"}
-      /> */}
-        {/* <ScatterBoxLoader primaryColor={"#6366F1"} background={"#6366F1"} /> */}
       </div>
     </>
   );

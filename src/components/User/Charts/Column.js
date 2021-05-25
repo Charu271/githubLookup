@@ -26,7 +26,6 @@ class Column extends Component {
           },
           data: [
             {
-              // Change type to "doughnut", "line", "splineArea", etc.
               type: "column",
               colorSet: ["#bb86fc", "#ee7a8b", "#f9c270", "#64cce8"],
               dataPoints: this.props.starData,

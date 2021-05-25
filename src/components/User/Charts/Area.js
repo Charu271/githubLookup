@@ -11,7 +11,7 @@ class Area extends Component {
           exportEnabled: true,
           colorSet: ["orange", "red"],
           backgroundColor: "#1E2742",
-          theme: "dark1", // "light1", "dark1", "dark2"
+          theme: "dark1",
           title: {
             text: "Weekly contributions",
             fontColor: "#a2a2a3",
@@ -38,8 +38,8 @@ class Area extends Component {
           data: [
             {
               type: "spline",
-              lineColor: "#25bfb6",
-              markerColor: "#25bfb6",
+              lineColor: "#728af4",
+              markerColor: "#728af4",
               markerSize: 0,
               color: "rgb(39,30,61)",
               toolTipContent: "Week {x}: {y}%",

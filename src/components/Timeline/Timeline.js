@@ -3,38 +3,33 @@ import "./Timeline.css";
 import { ReactComponent as WorkIcon } from "../../Assets/work.svg";
 import Typical from "react-typical";
 import Moment from "react-moment";
-import Particles from "react-particles-js";
-import { particles } from "../../Assets/particlesjs-config";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { Timeline } from "@material-ui/lab";
 import axios from "axios";
 
 function TimelineComponent() {
   let workIconStyles = { background: "blue" };
   const [activity, setactivity] = useState(null);
-  useEffect(async () => {
-    try {
-      const user = JSON.parse(localStorage.getItem("user"));
-      const res = await axios.get(
-        `https://api.github.com/users/${user.login}/received_events?page=1`
-      );
-      setactivity(res.data);
-    } catch (e) {
-      console.log(e);
-    }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const res = await axios.get(
+          `https://api.github.com/users/${user.login}/received_events?page=1`
+        );
+        setactivity(res.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
   }, []);
 
   return (
     <div>
-      {/* <Particles className="particles4" params={particles} />
-      <div className="timelineComponent row"> */}
-      {/* <div className="col-12">
-        <h1 className="title">TIMELINE</h1>
-      </div> */}
       <div className="col-12">
         <h3 className="second-heading" style={{ marginTop: "20px" }}>
           Contribution Activity -
@@ -48,11 +43,7 @@ function TimelineComponent() {
       <div className="col-12">
         <VerticalTimeline>
           {activity != null &&
-            activity.map((element) => {
-              let showButton =
-                element.buttonText !== undefined &&
-                element.buttonText !== null &&
-                element.buttonText !== "";
+            activity.map((element, i) => {
               let event;
               switch (element.type) {
                 case "WatchEvent":
@@ -77,81 +68,74 @@ function TimelineComponent() {
                   event = "";
               }
               return (
-                <>
-                  <VerticalTimelineElement
-                    key={element.actor.id}
-                    iconStyle={workIconStyles}
-                    icon={<WorkIcon />}
-                    contentArrowStyle={{
-                      borderRight: "7px solid rgb(33, 150, 243) ",
-                    }}
-                    contentStyle={{
-                      background:
-                        "linear-gradient(to top right,#25bfb6,#53cec6,#74ded7,#91ede7,#adfdf8)",
-                      color: "#fff",
-                    }}
-                  >
-                    {/* <h3 className="vertical-timeline-element-title">
-                  {element.actor.display_login}
-                </h3> */}
-                    <div className="row secondary">
-                      <div className="col-3">
-                        <div>
-                          <img
-                            src={element.actor.avatar_url}
-                            className="actorImage"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-9">
-                        <div className="content">
-                          <a
-                            target="_blank"
-                            href={`https://github.com/${element.actor.display_login}`}
-                            className="actorName"
-                          >
-                            {element.actor.display_login}
-                          </a>{" "}
-                          <span className="event">
-                            {event == "forked" ? " forked " : null}
-                            {event == "forked" ? (
-                              <a
-                                target="_blank"
-                                href={element.payload.forkee.html_url}
-                                class="actorlink"
-                              >
-                                {element.payload.forkee.full_name}
-                              </a>
-                            ) : (
-                              ` ${event} `
-                            )}
-                            {event == "forked" ? " from " : null}
-                          </span>
-                          <a
-                            target="_blank"
-                            href={`https://github.com/${element.repo.name}`}
-                            className="actorRepo"
-                          >
-                            {element.repo.name}
-                          </a>
-                        </div>
+                <VerticalTimelineElement
+                  key={i}
+                  iconStyle={workIconStyles}
+                  icon={<WorkIcon />}
+                  contentArrowStyle={{
+                    borderRight: "7px solid rgb(33, 150, 243) ",
+                  }}
+                  contentStyle={{
+                    background: " #728af4",
+                    color: "#fff",
+                  }}
+                >
+                  <div className="row secondary">
+                    <div className="col-3">
+                      <div>
+                        <img
+                          src={element.actor.avatar_url}
+                          className="actorImage"
+                          alt="UserImage"
+                        />
                       </div>
                     </div>
-                    <h5
-                      className="vertical-timeline-element-subtitle"
-                      style={{ display: "flex" }}
-                    ></h5>
-                    <p id="description">
-                      <Moment fromNow>{element.created_at}</Moment>
-                    </p>
-                  </VerticalTimelineElement>
-                </>
+                    <div className="col-9">
+                      <div className="content">
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href={`https://github.com/${element.actor.display_login}`}
+                          className="actorName"
+                        >
+                          {element.actor.display_login}
+                        </a>{" "}
+                        <span className="event">
+                          {event === "forked" ? " forked " : null}
+                          {event === "forked" ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={element.payload.forkee.html_url}
+                              className="actorlink"
+                            >
+                              {element.payload.forkee.full_name}
+                            </a>
+                          ) : (
+                            ` ${event} `
+                          )}
+                          {event === "forked" ? " from " : null}
+                        </span>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href={`https://github.com/${element.repo.name}`}
+                          className="actorRepo"
+                        >
+                          {element.repo.name}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <p id="description">
+                    <Moment fromNow>{element.created_at}</Moment>
+                  </p>
+                </VerticalTimelineElement>
               );
             })}
         </VerticalTimeline>
       </div>
     </div>
-    // </div>
   );
 }
 

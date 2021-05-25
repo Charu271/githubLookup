@@ -8,13 +8,12 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-default navbar-expand-sm fixed-top ">
-          {/* <div class="container-fluid"> */}
-          <Link class="navbar-brand" to="/">
+        <nav className="navbar navbar-default navbar-expand-sm fixed-top ">
+          <Link className="navbar-brand" to="/">
             <GitHubIcon style={{ fontSize: "2.5rem" }} />
           </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -24,27 +23,30 @@ class Navbar extends Component {
           >
             <MenuIcon style={{ color: "#9497a3" }} />
           </button>
-          <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav me-4 mb-2 mb-lg-0 ms-auto">
-              <li class="nav-item">
+          <div
+            className="collapse navbar-collapse "
+            id="navbarSupportedContent"
+          >
+            <ul className="navbar-nav me-4 mb-2 mb-lg-0 ms-auto">
+              <li className="nav-item">
                 <NavLink
                   className="nav-link "
                   to="/topUsers"
                   activeStyle={{
                     fontWeight: "bold",
-                    color: "#25bfb6",
+                    color: "#728AF4",
                   }}
                 >
                   Most Active Users
                 </NavLink>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <NavLink
                   className="nav-link"
                   to="/topRepos"
                   activeStyle={{
                     fontWeight: "bold",
-                    color: "#25bfb6",
+                    color: "#728AF4",
                   }}
                 >
                   Top repositories
@@ -52,7 +54,6 @@ class Navbar extends Component {
               </li>
             </ul>
           </div>
-          {/* </div> */}
         </nav>
       </div>
     );

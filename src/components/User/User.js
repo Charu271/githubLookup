@@ -1,5 +1,3 @@
-//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
-//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
 import React, { Component } from "react";
 import Profile from "./Profile/Profile";
 import axios from "axios";
@@ -11,7 +9,6 @@ import Area from "./Charts/Area";
 import Repo from "./Repo/Repo";
 import { colors } from "../../Assets/colors";
 import { particles } from "../../Assets/particlesjs-config";
-import ScatterBoxLoaderComponent from "./Loader";
 import SunspotLoaderComponent from "../Trending/SunSpotLoader";
 import TimeLine from "../Timeline/Timeline";
 
@@ -46,7 +43,7 @@ class User extends Component {
   }
   componentDidMount() {
     this.animate();
-    if (this.state.repos.length == 0) {
+    if (this.state.repos.length === 0) {
       axios
         .get(
           `https://api.github.com/users/${this.state.user.login}/repos?per_page=1000`,
@@ -92,7 +89,7 @@ class User extends Component {
     var commit = [];
     var n = this.state.repos.length - 1;
     for (var i = 0; i < 52; i++) commit.push(0);
-    for (var i = 0; i < this.state.repos.length; i++) {
+    for (i = 0; i < this.state.repos.length; i++) {
       var last = i;
       axios
         .get(
@@ -109,11 +106,11 @@ class User extends Component {
           for (var j = 0; j < data.length; j++) {
             commit[j] += data[j].total;
           }
-          for (var j = 0; j < commit.length; j++) {
+          for (j = 0; j < commit.length; j++) {
             if (commit[j] > max) max = commit[j];
           }
           max = max + 20;
-          if (n == last) {
+          if (n === last) {
             const result = commit.map((d, i) => {
               return { x: i + 1, y: (commit[i] / max) * 100 };
             });
@@ -147,7 +144,7 @@ class User extends Component {
           } else {
             map.set(languages[i], 1);
           }
-          if (index == this.state.repos.length - 1) {
+          if (index === this.state.repos.length - 1) {
             let result = [];
             for (let [key, value] of map) {
               result.push({ key, value });
@@ -176,34 +173,37 @@ class User extends Component {
     });
   };
   setType = (val) => {
-    this.setState({ type: val });
+    this.setState({
+      type: val,
+    });
+    // window.location.reload();
   };
   render() {
     return (
-      <div className="outer-container">
-        {this.state.loader &&
-        this.state.data.length == 0 &&
-        this.state.pieData.length == 0 &&
-        this.state.starData.length == 0 ? (
-          <div className="sunspotLoader1">
-            <SunspotLoaderComponent />
-          </div>
-        ) : (
-          <div>
-            <Particles className="particles1" params={particles} />
+      <>
+        <Particles className="particles1" params={particles} />
+        <div className="outer-container">
+          {this.state.loader &&
+          this.state.data.length === 0 &&
+          this.state.pieData.length === 0 &&
+          this.state.starData.length === 0 ? (
+            <div className="loaderWrap">
+              <div className="sunspotLoader1">
+                <SunspotLoaderComponent />
+              </div>
+            </div>
+          ) : (
             <div className="userProfile row">
               <Profile userName={this.state.user} />
               <div className="row">
                 <div className="selector col-11 offset-1 col-sm-5 offset-sm-7 col-md-4 offset-md-8">
-                  <div className="row">
+                  <div className="row ">
                     <div
                       className="col-6 division1"
                       style={{
                         background:
-                          this.state.type == "stats"
-                            ? "linear-gradient(to top right,#25bfb6,#53cec6,#74ded7,#91ede7,#adfdf8)"
-                            : "#15182c",
-                        color: this.state.type == "stats" ? "black" : "white",
+                          this.state.type === "stats" ? "#728AF4" : "#15182c",
+                        color: this.state.type === "stats" ? "black" : "white",
                       }}
                       onClick={() => this.setType("stats")}
                     >
@@ -213,11 +213,11 @@ class User extends Component {
                       className="col-6 division2"
                       style={{
                         background:
-                          this.state.type == "timeline"
-                            ? "linear-gradient(to top right,#25bfb6,#53cec6,#74ded7,#91ede7,#adfdf8)"
+                          this.state.type === "timeline"
+                            ? "#728AF4"
                             : "#15182c",
                         color:
-                          this.state.type == "timeline" ? "black" : "white",
+                          this.state.type === "timeline" ? "black" : "white",
                       }}
                       onClick={() => this.setType("timeline")}
                     >
@@ -226,22 +226,24 @@ class User extends Component {
                   </div>
                 </div>
               </div>
-              {this.state.type == "stats" ? (
+              {this.state.type === "stats" ? (
                 <>
-                  <div className="col-12 parent">
+                  <div
+                    className="col-12 parent"
+                    style={{
+                      display: this.state.type === "stats" ? "block" : "none",
+                    }}
+                  >
                     {this.state.data.length > 0 ? (
                       <Area data={this.state.data} className="area" />
                     ) : null}
                   </div>
-                  <div class="col-12 parent">
+                  <div className="col-12 parent">
                     {this.state.pieData.length > 0 ? (
-                      <Pie
-                        pieData={this.state.pieData}
-                        pieColor={this.state.pieColor}
-                      />
+                      <Pie pieData={this.state.pieData} />
                     ) : null}
                   </div>
-                  <div class="col-12  parent">
+                  <div className="col-12  parent">
                     {this.state.starData.length > 0 ? (
                       <Column starData={this.state.starData} />
                     ) : null}
@@ -260,8 +262,8 @@ class User extends Component {
                         </select>
                       </div>
                       <div className="row wrapper">
-                        {this.state.topRepos.map((repo) => (
-                          <div className="col-12 col-sm-6 col-md-4 ">
+                        {this.state.topRepos.map((repo, i) => (
+                          <div className="col-12 col-sm-6 col-md-4 " key={i}>
                             <Repo repo={repo} />
                           </div>
                         ))}
@@ -273,9 +275,9 @@ class User extends Component {
                 <TimeLine />
               )}
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </>
     );
   }
 }

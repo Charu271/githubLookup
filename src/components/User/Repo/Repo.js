@@ -11,7 +11,6 @@ export default class Repo extends Component {
     return (
       <div className="card">
         <div className="repoName">{repo.name}</div>
-        {/* <div className="description">{repo.description}</div> */}
         <div className="content row ">
           <div className="language col-12">
             <FiberManualRecordIcon
@@ -25,7 +24,7 @@ export default class Repo extends Component {
           <div className="forks col-4">
             <div className="internal">
               <div>
-                <img src={fork} style={{ fill: "black" }} />
+                <img src={fork} style={{ fill: "black" }} alt="Fork" />
               </div>
               <div>&nbsp;&nbsp;{repo.forks}</div>
             </div>

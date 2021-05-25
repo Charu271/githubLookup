@@ -26,13 +26,13 @@
     margin-top: 10px;
   }
 }
-.repoName {
+.repositoryName {
   text-decoration: none;
   text-transform: capitalize;
   font-size: 1.5rem;
-  color: $header-card;
+  color: #728af4;
   &:hover {
-    color: $header-card;
+    color: #728af4;
   }
 }
 .repoInfo {
@@ -90,23 +90,9 @@
   float: right;
   border-radius: 6px;
   margin-right: 2%;
-  background: linear-gradient(
-    to top right,
-    #25bfb6,
-    #53cec6,
-    #74ded7,
-    #91ede7,
-    #adfdf8
-  );
+  background: linear-gradient(to top right, #728af4, #a1b2ff, #c0cbfc);
   &:hover {
-    background: linear-gradient(
-      to top right,
-      #adfdf8,
-      #91ede7,
-      #74ded7,
-      #53cec6,
-      #25bfb6
-    );
+    background: linear-gradient(to top right, #c0cbfc, #a1b2ff, #728af4);
   }
 }
 .repoWrapper {

@@ -29,6 +29,12 @@ h3 {
   box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25),
     0 0.4em 1.25em 0 rgba(0, 0, 0, 0.15) !important;
   padding: 10px;
+  background-color: linear-gradient(
+    #b49ef1,
+    #c6b5f8,
+    #a080f5,
+    #8356fd
+  ) !important;
 }
 .vertical-timeline-element-subtitle {
   color: black;
@@ -78,7 +84,7 @@ h3 {
 .vertical-timeline-element-icon {
   margin-left: 4px;
   margin-top: 5px;
-  background-color: teal !important;
+  background-color: #728af4 !important;
 }
 .actorName,
 .actorRepo,
@@ -119,14 +125,4 @@ h3 {
   .secondary div {
     width: 100%;
   }
-}
-.vertical-timeline-element-content {
-  background-color: linear-gradient(
-    to top right,
-    #25bfb6,
-    #53cec6,
-    #74ded7,
-    #91ede7,
-    #adfdf8
-  ) !important;
 }

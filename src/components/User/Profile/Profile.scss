@@ -15,7 +15,7 @@
   align-items: center;
 }
 .name {
-  color: $header-card;
+  color: #a2a2a3;
 }
 @media screen and (max-width: 400px) {
   .name {
@@ -30,7 +30,7 @@
   margin: 2%;
 }
 .smCard {
-  margin: 5px;
+  margin: 15px;
   height: 100px;
   width: 150px;
   padding: 10px 20px;
@@ -42,19 +42,26 @@
     #91ede7,
     #adfdf8
   );
-  color: black;
-  border-radius: 5px;
+  color: rgb(240, 240, 240);
+  border-radius: 15px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 19px;
+  border-radius: 19px;
+  border-radius: 19px;
+  background: #1e2742;
+  box-shadow: 6px 6px 5px #171e33, -6px -6px 5px #253051;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .smCard {
     height: 70px;
     width: 110px;
-    font-size: small;
+    font-size: 0.65rem;
+    border-radius: 1px;
+    border-radius: 8px;
   }
 }
 @media screen and (max-width: 300px) {

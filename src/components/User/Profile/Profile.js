@@ -8,7 +8,11 @@ class Profile extends Component {
       <div className="container-fluid">
         <div className="row profile justify-content-center align-items-center">
           <div className="col-12 col-sm-12">
-            <img className="avatar" src={`${user.avatar_url}`} />
+            <img
+              className="avatar"
+              src={`${user.avatar_url}`}
+              alt="userImage"
+            />
           </div>
           <div className="col-12 col-sm-12">
             <div className="name">
@@ -16,7 +20,7 @@ class Profile extends Component {
             </div>
           </div>
           <div className="col-12 login">
-            <a target="_blank" href={user.html_url}>
+            <a target="_blank" rel="noopener noreferrer" href={user.html_url}>
               {user.login}
             </a>
           </div>

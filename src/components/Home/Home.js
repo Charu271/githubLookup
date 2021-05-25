@@ -17,7 +17,7 @@ class Home extends Component {
     this.setState({ userName: e.target.value });
   }
   search = async (e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       try {
         const res = await axios.get(
           `https://api.github.com/users/${this.state.userName}`
@@ -34,18 +34,17 @@ class Home extends Component {
     return (
       <>
         <Particles className="particles" params={particles} />
-        <div class="heading">
+        <div className="heading">
           <h1>Github LookUp</h1>
         </div>
-        <div class="container-fluid heroSection ">
+        <div className="container-fluid heroSection ">
           <div className="row justify-content-center align-items-center">
             <div className="col-12 col-md-2 col-lg-3"></div>
             <div className="col-12 col-md-8 col-lg-6 ">
-              <div classNameName="hero">
-                <img src={octocat} className="octocat" />
+              <div className="hero">
+                <img src={octocat} className="octocat" alt="Octocat" />
                 <br />
                 <input
-                  className="form-control"
                   placeholder="Your Github id"
                   type="text"
                   className="textfield"

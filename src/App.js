@@ -1,12 +1,9 @@
 import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.css";
-import $ from "jquery";
-import Popper from "popper.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-import { Route, Switch, Redirect, Link } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { Route, Switch, Link } from "react-router-dom";
 import React from "react";
 import Home from "./components/Home/Home";
 import User from "./components/User/User";
@@ -15,8 +12,6 @@ import Active from "./components/Active/Active";
 import Trending from "./components/Trending/Trending";
 import Timeline from "./components/Timeline/Timeline";
 
-const history = createBrowserHistory();
-console.log(history);
 class App extends React.Component {
   constructor(props) {
     super(props);
