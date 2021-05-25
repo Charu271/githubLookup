@@ -7,8 +7,14 @@
   display: block;
   margin: auto;
 }
+.login {
+  color: rgb(240, 240, 240);
+  text-decoration: none;
+  &:hover {
+    color: rgb(240, 240, 240);
+  }
+}
 .name,
-.login,
 .repos {
   display: flex;
   justify-content: center;

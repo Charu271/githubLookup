@@ -16,14 +16,30 @@ class Profile extends Component {
           </div>
           <div className="col-12 col-sm-12">
             <div className="name">
-              <h2>{user.name}</h2>
+              <h2>
+                {user.name}{" "}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textDecoration: "none",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <a
+                    className="login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={user.html_url}
+                  >
+                    @{user.login}
+                  </a>
+                </div>
+              </h2>
             </div>
           </div>
-          <div className="col-12 login">
-            <a target="_blank" rel="noopener noreferrer" href={user.html_url}>
-              {user.login}
-            </a>
-          </div>
+          <div className="col-12 "></div>
           <div className="col-12 repos">
             <div className="smCard">
               <div>{user.public_repos}</div>
