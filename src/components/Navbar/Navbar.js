@@ -13,6 +13,7 @@ class Navbar extends Component {
           <Link className="navbar-brand" to="/">
             <GitHubIcon style={{ fontSize: "2.5rem" }} />
           </Link>
+          
           <button
             className="navbar-toggler"
             type="button"
@@ -58,7 +59,9 @@ class Navbar extends Component {
               </li>
             </ul>
           </div>
+          
         </nav>
+  
       </div>
     );
   }

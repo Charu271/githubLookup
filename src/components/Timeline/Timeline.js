@@ -31,14 +31,14 @@ function TimelineComponent() {
   return (
     <div>
       <div className="col-12">
-        <h3 className="second-heading" style={{ marginTop: "20px" }}>
-          Contribution Activity -
-          <Typical
+        <h3 className="second-heading" style={{ marginTop: "20px" }}>Contribution Activity </h3>
+        <div className="typical">
+        <Typical
             loop={Infinity}
             wrapper="b"
-            steps={[' Commits', 4000, ' Issues', 4000, ' Pull Requests', 4000]}
+            steps={[ ' Commits', 4000, ' Issues', 4000, ' Pull Requests', 4000]}
           />
-        </h3>
+          </div>
       </div>
       <div className="col-12">
         <VerticalTimeline>
