@@ -3,6 +3,7 @@ import "./Navbar.scss";
 import MenuIcon from "@material-ui/icons/Menu";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { Link, NavLink } from "react-router-dom";
+import DarkMode from "../DarkMode";
 
 class Navbar extends Component {
   render() {
@@ -51,6 +52,9 @@ class Navbar extends Component {
                 >
                   Top repositories
                 </NavLink>
+              </li>
+              <li>
+                <DarkMode/>
               </li>
             </ul>
           </div>
