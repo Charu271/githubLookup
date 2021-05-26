@@ -13,21 +13,23 @@ class Navbar extends Component {
           <Link className="navbar-brand" to="/">
             <GitHubIcon style={{ fontSize: "2.5rem" }} />
           </Link>
-          <div  class="d-flex flex-row order-2 order-lg-3 b">
-          <ul class="navbar-nav flex-row">
-            <li><DarkMode/></li>
-          </ul>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <MenuIcon style={{ color: "#9497a3" }} />
-          </button>
+          <div className="d-flex flex-row order-2 order-lg-3 b">
+            <ul className="navbar-nav flex-row">
+              <li>
+                <DarkMode />
+              </li>
+            </ul>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <MenuIcon style={{ color: "#9497a3" }} />
+            </button>
           </div>
           <div
             className="collapse navbar-collapse order-3 order-lg-2 "
@@ -58,12 +60,9 @@ class Navbar extends Component {
                   Top repositories
                 </NavLink>
               </li>
-              
             </ul>
           </div>
-          
         </nav>
-  
       </div>
     );
   }

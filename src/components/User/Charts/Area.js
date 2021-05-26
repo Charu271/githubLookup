@@ -3,7 +3,6 @@ import { CanvasJSChart } from "canvasjs-react-charts";
 
 class Area extends Component {
   render() {
-    console.log(window.screen.width);
     return (
       <CanvasJSChart
         style={{ width: "90%", padding: "10%", overflowY: "hidden" }}
