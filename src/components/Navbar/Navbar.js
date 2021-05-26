@@ -14,8 +14,8 @@ class Navbar extends Component {
             <GitHubIcon style={{ fontSize: "2.5rem" }} />
           </Link>
 
-          <div class="d-flex flex-row order-xs-2 order-sm-3 order-md-3 order-lg-3 b">
-            <ul class="navbar-nav flex-row">
+          <div className="d-flex flex-row order-xs-2 order-sm-3 order-md-3 order-lg-3 b">
+            <ul className="navbar-nav flex-row">
               <li>
                 <DarkMode />
               </li>
