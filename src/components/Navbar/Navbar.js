@@ -13,7 +13,7 @@ class Navbar extends Component {
           <Link className="navbar-brand" to="/">
             <GitHubIcon style={{ fontSize: "2.5rem" }} />
           </Link>
-          <div  class="d-flex flex-row order-2 order-lg-3 b">
+          <div  class="d-flex flex-row order-xs-2 order-sm-3 order-md-3 order-lg-3 b">
           <ul class="navbar-nav flex-row">
             <li><DarkMode/></li>
           </ul>
@@ -30,7 +30,7 @@ class Navbar extends Component {
           </button>
           </div>
           <div
-            className="collapse navbar-collapse order-3 order-lg-2 "
+            className="collapse navbar-collapse order-xs-3 order-sm-2 order-md-2 order-lg-2  "
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav me-4 mb-2 mb-lg-0 ms-auto">
