@@ -78,7 +78,7 @@ class Trending extends Component {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    placeholder="Search Languauge..."
+                    placeholder="Search Language..."
                     margin="normal"
                     variant="standard"
                     className="textfield1"
