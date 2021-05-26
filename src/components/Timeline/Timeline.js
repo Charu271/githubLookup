@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Timeline.css";
 import { ReactComponent as WorkIcon } from "../../Assets/work.svg";
-import Typical from 'react-typical';
+import Typical from "react-typical";
 import Moment from "react-moment";
 import {
   VerticalTimeline,
@@ -36,7 +36,7 @@ function TimelineComponent() {
           <Typical
             loop={Infinity}
             wrapper="b"
-            steps={[' Commits', 4000, ' Issues', 4000, ' Pull Requests', 4000]}
+            steps={[" Commits", 4000, " Issues", 4000, " Pull Requests", 4000]}
           />
         </h3>
       </div>
