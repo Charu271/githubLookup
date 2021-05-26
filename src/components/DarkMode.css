@@ -22,14 +22,14 @@
   
   #darkMode.clicked {
     filter: none !important;
-    background-color: rgb(60, 140, 165);
+    background-color: #41476b;
   
   }
 
   
 :root {
   
-  --blue: rgb(60, 140, 165);
+  --blue: #41476b;
   --white: #15182c;
 }
 body.light {
@@ -51,3 +51,4 @@ body {
 nav {
   background: var(--background-color);
 }
+

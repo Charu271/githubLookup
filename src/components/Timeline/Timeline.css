@@ -17,6 +17,13 @@ body {
   text-align: center;
 }
 
+.typical{
+  color: white;
+  text-align: center;
+  font-size: x-large;
+  margin-bottom: 10px;
+}
+
 h3 {
   padding-top: 0.25em;
 }
