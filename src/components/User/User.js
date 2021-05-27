@@ -50,7 +50,7 @@ class User extends Component {
           `https://api.github.com/users/${this.state.user.login}/repos?per_page=1000`,
           {
             headers: {
-              Authorization: "Token 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",
+              Authorization: "Token %Generate personal oAuth token%",
             },
           }
         )
@@ -97,7 +97,7 @@ class User extends Component {
           `https://api.github.com/repos/${this.state.user.login}/${this.state.repos[i].name}/stats/commit_activity`,
           {
             headers: {
-              Authorization: "Token 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",
+              Authorization: "Token %Generate personal oAuth token%",
             },
           }
         )
@@ -134,7 +134,7 @@ class User extends Component {
           `https://api.github.com/repos/${this.state.user.login}/${repo.name}/languages`,
           {
             headers: {
-              Authorization: "Token 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",
+              Authorization: "Token %Generate personal oAuth token%",
             },
           }
         );
