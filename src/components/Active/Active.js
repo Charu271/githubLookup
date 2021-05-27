@@ -25,7 +25,7 @@ class Active extends Component {
         "https://api.github.com/search/users?q=followers%3A%3E%3D1000",
         {
           headers: {
-            Authorization: "Token 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",
+            Authorization: "Token %Generate personal oAuth token%",
           },
         }
       );
@@ -37,7 +37,7 @@ class Active extends Component {
         axios
           .get(`https://api.github.com/users/${data[k].login}`, {
             headers: {
-              Authorization: "Token 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",
+              Authorization: "Token %Generate personal oAuth token%",
             },
           })
           .then((res) => {
