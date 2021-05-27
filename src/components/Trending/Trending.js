@@ -36,7 +36,7 @@ class Trending extends Component {
           `https://api.github.com/search/repositories?q=language:${this.state.language}&sort=stars&order=desc`,
           {
             headers: {
-              Authorization: "Token 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",
+              Authorization: "Token %Generate personal oAuth token%",
             },
           }
         );
